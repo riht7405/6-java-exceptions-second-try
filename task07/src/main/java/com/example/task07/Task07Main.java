@@ -12,13 +12,18 @@ public class Task07Main {
     public Processor processor;
 
     public String getExceptionType() {
-        //todo напишите здесь свою корректную реализацию этого метода, вместо существующей
         try {
-            processor.process(); //todo вы можете заменить реализацию этого метода для ручного дебага
+            processor.process();
+            // Если исключение не было выброшено, выполнение дойдет сюда
+            return NONE;
         } catch (Exception e) {
-
+            // Проверяем, является ли исключение наследником RuntimeException
+            if (e instanceof RuntimeException) {
+                return UNCHECKED;
+            } else {
+                return CHECKED;
+            }
         }
-        return null;
     }
 
 }
